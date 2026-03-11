@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Course</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: #f4f6f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2a5298;
+            margin-bottom: 25px;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px 35px;
+            width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2a5298;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #2a5298;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        body > h1 {
+            position: absolute;
+            top: 40px;
+        }
+
+        @media (max-width: 480px) {
+            form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Creating a Course</h1>
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <label>Course Name</label>
+        <input type="text" placeholder="Course Name" name="c_name">
+
+        <label>Description</label>
+        <input type="text" placeholder="Description" name="desc">
+
+        <button>Submit</button>
+    </form>
+</body>
+</html>

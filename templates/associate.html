@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Association</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: #f4f6f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2a5298;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px 35px;
+            width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        select:focus {
+            border-color: #2a5298;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #2a5298;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        /* Wrapper for title + form */
+        body > h1 {
+            position: absolute;
+            top: 40px;
+        }
+
+        @media (max-width: 480px) {
+            form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Association of Student and Course</h1>
+
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <select name="s_id">
+            {% for student in students %}
+            <option value="{{student.id}}">{{student.username}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="c_id">
+            {% for course in courses %}
+            <option value="{{course.id}}">{{course.name}}</option>
+            {% endfor %}
+        </select>
+
+        <button>Submit</button>
+    </form>
+</body>
+</html>

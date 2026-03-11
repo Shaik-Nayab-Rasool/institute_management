@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            color: #444;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px 35px;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #2a5298;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #2a5298;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        h2 {
+            background: #ffe6e6;
+            color: red;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Coders</h1>
+
+    {% if status %}
+        <h2>Username or Password Wrong!</h2>
+    {% endif %}
+
+    <h3>Admin Login</h3>
+    <form method="post" action="dash/">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="un" placeholder="Your Username">
+
+        <label>Password</label>
+        <input type="text" name="up" placeholder="Your Password">
+
+        <button>Login</button>
+    </form>
+</body>
+</html>
